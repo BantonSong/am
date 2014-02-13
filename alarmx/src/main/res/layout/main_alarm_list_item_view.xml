@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="10:00"
+                android:textSize="36sp"
+                android:id="@+id/list_alarm_time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="上午"
+                android:id="@+id/list_alarm_time_apm"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_alarm_switch"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/seperator"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Default"
+            android:id="@+id/list_alarm_name"/>
+        <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="一 二 三 四 五 六 日"
+            android:id="@+id/list_alarm_repeat"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginRight="8dp">
+            <ImageView
+                android:layout_width="@dimen/small_icon_width"
+                android:layout_height="@dimen/small_icon_height"
+                android:src="@drawable/ic_launcher"
+                android:id="@+id/list_alarm_ringtone"/>
+
+            <ImageView
+                android:layout_width="@dimen/small_icon_width"
+                android:layout_height="@dimen/small_icon_height"
+                android:src="@drawable/ic_launcher"
+                android:id="@+id/list_alarm_vibration"/>
+            <ImageView
+                android:layout_width="@dimen/small_icon_width"
+                android:layout_height="@dimen/small_icon_height"
+                android:src="@drawable/ic_launcher"
+                android:id="@+id/list_alarm_remind"/>
+            <ImageView
+                android:layout_width="@dimen/small_icon_width"
+                android:layout_height="@dimen/small_icon_height"
+                android:src="@drawable/ic_launcher"
+                android:id="@+id/list_alarm_lock"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
