@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="CustomTheme" parent="@style/Theme.AppCompat">
+        <item name="android:actionBarStyle" tools:ignore="NewApi">@style/SimpleActionBar</item>
+        <item name="actionBarStyle">@style/SimpleActionBar</item>
+    </style>
+    <style name="SimpleActionBar"
+           parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/actionbar_background</item>
+        <!-- Support library compatibility -->
+        <item name="background">@drawable/actionbar_background</item>
+
+    </style>
+    <style name="SimpleActionMode" parent="@style/Widget.AppCompat.Light.ActionMode.Inverse">
+        <item name="android:background">@drawable/actionbar_background</item>
+        <item name="background">@drawable/actionbar_background</item>
+
+        <!--<item name="actionModeCloseButtonStyle">@style/ActionModeCloseBtn</item>-->
+        <!--<item name="actionModeCloseDrawable">@drawable/ic_action_accept</item>-->
+        <!--<item name="android:actionModeCloseDrawable" tools:ignore="NewApi">@drawable/ic_action_accept</item>
+        <item name="android:actionModeCloseButtonStyle" tools:ignore="NewApi">@style/ActionModeCloseBtn</item>-->
+    </style>
+    <style name="TextViewStyle">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textColorHint">#000000</item>
+    </style>
+    <style name="CustomDialog" parent="@style/CustomTheme">
+        <item name="android:background">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+<!--    <style name="ActionModeCloseBtn"
+        parent="Widget.AppCompat.ActionButton.CloseMode">
+        <item name="android:background">@drawable/ic_action_accept</item>
+    </style>-->
+</resources>
