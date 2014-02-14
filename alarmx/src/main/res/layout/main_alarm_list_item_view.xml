@@ -9,7 +9,6 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center_vertical">
@@ -25,14 +24,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="10:00"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 android:textColor="#ffffff"
                 android:id="@+id/list_alarm_time"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="上午"
                 android:textColor="#ffffff"
                 android:id="@+id/list_alarm_time_apm"/>
@@ -59,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#ffffff"
+            android:textColor="#e0ffffff"
             android:text="Default"
             android:id="@+id/list_alarm_name"/>
         <TextView
@@ -68,7 +67,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#ffffff"
+            android:textColor="#e0ffffff"
             android:text="一 二 三 四 五 六 日"
             android:id="@+id/list_alarm_repeat"/>
         <LinearLayout

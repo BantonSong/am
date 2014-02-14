@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -25,7 +26,8 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity
 {
-    private AlarmService mService = null;
+    private static AlarmService mService = null;
+
     private List<AlarmItem> mAlarms = null;  //目前所有的闹钟
     private ServiceConnection mServiceConn = new ServiceConnection()
     {
@@ -105,6 +107,13 @@ public class MainActivity extends ActionBarActivity
     }
 
     @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        unbindService(mServiceConn);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -143,6 +152,38 @@ public class MainActivity extends ActionBarActivity
         private AlarmAdapter mMainListAdpater = null;
         private Context mContext = null;
 
+        private AlarmAdapter.OnActionInterface mOnAdapterInterface = new AlarmAdapter.OnActionInterface()
+        {
+            @Override
+            public void onDelete(List<AlarmItem> alarms)
+            {
+                int size = alarms.size();
+                for(int i = 0;i < size;i++)
+                {
+                    if(mService != null)
+                        mService.delAlarm(alarms.get(i));
+                }
+            }
+
+            @Override
+            public void onSingleTap(int position)
+            {
+
+            }
+
+            @Override
+            public void onLongPress(int position)
+            {
+
+            }
+
+            @Override
+            public void onMultiSelectionChanged(int size)
+            {
+
+            }
+        };
+
         public PlaceholderFragment(Context context)
         {
             mContext = context;
@@ -162,6 +203,7 @@ public class MainActivity extends ActionBarActivity
             {
                 mMainListAdpater = new AlarmAdapter(mContext,mAlarms,
                         R.layout.main_alarm_list_item_view);
+                mMainListAdpater.setOnActionInterface(mOnAdapterInterface);
                 mMainList.setAdapter(mMainListAdpater);
             }
             else
@@ -175,6 +217,31 @@ public class MainActivity extends ActionBarActivity
         {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             mMainList = (ListView)rootView.findViewById(R.id.main_listview);
+            mMainList.setOnTouchListener(new View.OnTouchListener()
+            {
+                @Override
+                public boolean onTouch(View v, MotionEvent event)
+                {
+                    boolean needEndDelete = false; //是否需要调用AlarmAdapter.endDelete();
+                    boolean ret = false;
+                    if(event.getAction() == MotionEvent.ACTION_UP)
+                    {
+                        if(mMainListAdpater != null && mMainListAdpater.isDeleting())
+                            needEndDelete = true;
+                    }
+                    if(mMainListAdpater != null && mMainListAdpater.getGestureDetector().onTouchEvent(event))
+                    {
+                        ret = true;
+                    }
+                    else
+                    {
+                        ret = false;
+                    }
+                    if(needEndDelete)
+                        mMainListAdpater.endDelete();
+                    return ret;
+                }
+            });
             return rootView;
         }
     }
