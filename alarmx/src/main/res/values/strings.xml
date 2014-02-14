@@ -4,6 +4,8 @@
     <string name="app_name">Alarm X</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <!--main content-->
+    <string name="action_new">New</string>
 
     <!--week-->
     <string name="week_mon">Mon</string>

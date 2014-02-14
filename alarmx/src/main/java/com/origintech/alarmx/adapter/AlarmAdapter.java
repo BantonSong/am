@@ -1,7 +1,6 @@
 package com.origintech.alarmx.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.os.Handler;
 import android.os.Message;
 import android.view.GestureDetector;
@@ -9,8 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,11 +54,7 @@ public class AlarmAdapter extends BaseAdapter
 
     public void setAlarms(List<AlarmItem> alarms)
     {
-
-    }
-
-    public void notifyAlarmListChanged()
-    {
+        mAlarms = alarms;
         this.notifyDataSetChanged();
     }
 
