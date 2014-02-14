@@ -14,15 +14,6 @@ import java.util.List;
  */
 public class AlarmItem implements  Comparable<AlarmItem>
 {
-/*    *//**
-     * Alarm type
-     *//*
-    public final static int ALARM_APP = 0;
-    public final static int ALARM_SMS = 1;
-    public final static int ALARM_CALL = 2;
-    public final static int ALARM_REMINDER = 3;
-    public final static int ALARM_REMOTE = 4;
-    public final static int ALARM_DEFAULT = ALARM_REMINDER;*/
 
     //Alarm common property
     public final static String PROPERTY_ID = "id";
@@ -43,21 +34,12 @@ public class AlarmItem implements  Comparable<AlarmItem>
     public final static String PROPERTY_ALARM_RINGTONE_URI = "alarm_ringtone_uri";
     //public final static String PROPERTY_ALARM_RECORD_ENABLE = "alarm_record_enable";
 
-
-    //Alarm SMS property
-    public final static String PROPERTY_SMS_ENABLE = "sms_enable";
-    public final static String PROPERTY_PHONE = "phone";
-    public final static String PROPERTY_SMS_CONTENT = "sms_content";
     //Alarm Reminder property
     public final static String PROPERTY_REMINDER_ENABLE = "reminder_enable";
     public final static String PROPERTY_REMINDER_TEXT = "reminder_text";
-    //Alarm App property
-    public final static String PROPERTY_APP_ENABLE = "app_enable";
-    public final static String PROPERTY_PACKAGE_NAME = "app_package_name";
-    public final static String PROPERTY_STOP_APP = "app_stop";
-    //Alarm network
-    public final static String PROPERTY_NETWORK_RELATE = "network";
-    public final static String PROPERTY_WIFI_RELATE = "wifi";
+
+    //parent mode
+    public final static String PROPERTY_PARENT_MODE_ENABLE = "parent_mode_enable";
 
 
     //properties
@@ -78,20 +60,13 @@ public class AlarmItem implements  Comparable<AlarmItem>
         //alarm voice
         mProperty.addProperty(new SimpleProperty(PROPERTY_ALARM_VOLUMN,0));
         mProperty.addProperty(new SimpleProperty(PROPERTY_ALARM_RINGTONE_URI,""));
-        //alarm sms
-        mProperty.addProperty(new SimpleProperty(PROPERTY_SMS_ENABLE,0));
-        mProperty.addProperty(new SimpleProperty(PROPERTY_PHONE,""));
-        mProperty.addProperty(new SimpleProperty(PROPERTY_SMS_CONTENT,""));
+
         //alarm reminder
         mProperty.addProperty(new SimpleProperty(PROPERTY_REMINDER_ENABLE,0));
         mProperty.addProperty(new SimpleProperty(PROPERTY_REMINDER_TEXT,""));
-        //alarm app
-        mProperty.addProperty(new SimpleProperty(PROPERTY_APP_ENABLE,0));
-        mProperty.addProperty(new SimpleProperty(PROPERTY_PACKAGE_NAME,""));
-        mProperty.addProperty(new SimpleProperty(PROPERTY_STOP_APP,0));
-        //alarm network
-        mProperty.addProperty(new SimpleProperty(PROPERTY_NETWORK_RELATE,0));
-        mProperty.addProperty(new SimpleProperty(PROPERTY_WIFI_RELATE,0));
+
+        //parent mode
+        mProperty.addProperty(new SimpleProperty(PROPERTY_PARENT_MODE_ENABLE,0));
     }
 
     public int getPropertyValueType(String property)
@@ -116,20 +91,13 @@ public class AlarmItem implements  Comparable<AlarmItem>
         //alarm voice
         names.add(PROPERTY_ALARM_VOLUMN);
         names.add(PROPERTY_ALARM_RINGTONE_URI);
-        //alarm sms
-        names.add(PROPERTY_SMS_ENABLE);
-        names.add(PROPERTY_PHONE);
-        names.add(PROPERTY_SMS_CONTENT);
+
         //alarm reminder
         names.add(PROPERTY_REMINDER_ENABLE);
         names.add(PROPERTY_REMINDER_TEXT);
-        //alarm app
-        names.add(PROPERTY_APP_ENABLE);
-        names.add(PROPERTY_PACKAGE_NAME);
-        names.add(PROPERTY_STOP_APP);
-        //network
-        names.add(PROPERTY_NETWORK_RELATE);
-        names.add(PROPERTY_WIFI_RELATE);
+
+        //parent mode
+        names.add(PROPERTY_PARENT_MODE_ENABLE);
 
         return names;
     }

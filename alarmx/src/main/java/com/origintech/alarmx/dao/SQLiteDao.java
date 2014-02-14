@@ -168,9 +168,7 @@ public class SQLiteDao extends SQLiteOpenHelper
         sb.append(" ( ");
 
         createCommonColumn(sb);
-        createSMSField(sb);
         createReminderField(sb);
-        createAppField(sb);
 
         sb.append(" ) ");
 
@@ -215,42 +213,18 @@ public class SQLiteDao extends SQLiteOpenHelper
         sb.append(" " + AlarmItem.PROPERTY_ALARM_RINGTONE_URI + " ");
         sb.append(" TEXT NOT NULL, ");
 
+        sb.append(" " + AlarmItem.PROPERTY_PARENT_MODE_ENABLE + " ");
+        sb.append(" INTEGER NOT NULL, ");
+
     }
-    private void createSMSField(StringBuilder sb)
-    {
-        sb.append(" " + AlarmItem.PROPERTY_SMS_ENABLE + " ");
-        sb.append(" INTEGER NOT NULL, ");
 
-        sb.append(" " + AlarmItem.PROPERTY_PHONE + " ");
-        sb.append(" TEXT NOT NULL, ");
-
-        sb.append(" " + AlarmItem.PROPERTY_SMS_CONTENT + " ");
-        sb.append(" TEXT NOT NULL, ");
-    }
-    private void createAppField(StringBuilder sb)
-    {
-        sb.append(" " + AlarmItem.PROPERTY_APP_ENABLE + " ");
-        sb.append(" INTEGER NOT NULL, ");
-
-        sb.append(" " + AlarmItem.PROPERTY_PACKAGE_NAME + " ");
-        sb.append(" TEXT NOT NULL, ");
-
-        sb.append(" " + AlarmItem.PROPERTY_NETWORK_RELATE + " ");
-        sb.append(" INTEGER NOT NULL, ");
-
-        sb.append(" " + AlarmItem.PROPERTY_WIFI_RELATE + " ");
-        sb.append(" INTEGER NOT NULL, ");
-
-        sb.append(" " + AlarmItem.PROPERTY_STOP_APP + " ");
-        sb.append(" INTEGER NOT NULL ");
-    }
     private void createReminderField(StringBuilder sb)
     {
         sb.append(" " + AlarmItem.PROPERTY_REMINDER_ENABLE + " ");
         sb.append(" INTEGER NOT NULL, ");
 
         sb.append(" " + AlarmItem.PROPERTY_REMINDER_TEXT + " ");
-        sb.append(" TEXT NOT NULL, ");
+        sb.append(" TEXT NOT NULL ");
     }
 
     @Override
