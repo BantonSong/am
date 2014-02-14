@@ -2,17 +2,10 @@ package com.origintech.alarmx.global;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 
 import com.origintech.alarmx.R;
-import com.origintech.alarmx.alarm.AlarmItem;
 
-import java.security.IdentityScope;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -177,7 +170,7 @@ public class Global
 
     public static class Day
     {
-        public static CharSequence getDayTime(int hour,int min,boolean twenty_four)
+        public static String getTimeString(int hour, int min, boolean twenty_four)
         {
             String hourStr = "";
             String minStr = getTimeStr(min);
@@ -190,9 +183,9 @@ public class Global
             {
                 hourStr = getTimeStr(hour % 12);
                 if(hour >= 12)
-                    return hourStr + ":" + minStr + "pm";
+                    return hourStr + ":" + minStr;
                 else
-                    return hourStr + ":" + minStr + "am";
+                    return hourStr + ":" + minStr;
             }
         }
         public static String getDayString(int year,int month,int day)
@@ -212,7 +205,7 @@ public class Global
             PreferenceSet pef = new PreferenceSet(context);
             twenty_four = pef.getBoolean(PreferenceSet.PREF_24_HOUR,true);
 
-            return Day.getDayTime(hour,min,twenty_four);
+            return Day.getTimeString(hour, min, twenty_four);
         }
     }
 

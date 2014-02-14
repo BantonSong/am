@@ -40,8 +40,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher"
-            android:id="@+id/list_alarm_switch"/>
+            android:src="@drawable/ic_action_alarms"
+            android:id="@+id/list_alarm_switch"
+            android:clickable="true"/>
 
     </LinearLayout>
     <View
@@ -62,9 +63,10 @@
             android:text="Default"
             android:id="@+id/list_alarm_name"/>
         <TextView
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginLeft="4dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#e0ffffff"
@@ -74,7 +76,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical|right">
             <ImageView
                 android:layout_width="@dimen/small_icon_width"
                 android:layout_height="@dimen/small_icon_height"

@@ -46,7 +46,6 @@ public class MainActivity extends ActionBarActivity
         public void onServiceDisconnected(ComponentName name)
         {
             serviceDisconnected();
-            mService.unregisterOnDataChange(mOnServiceDataChange);
             mService = null;
         }
     };
@@ -64,9 +63,8 @@ public class MainActivity extends ActionBarActivity
         boolean started = false;
         //检测服务是否启动
         Global.PreferenceSet prefs = new Global.PreferenceSet(this);
-        prefs.beginEdit();
         started = prefs.getBoolean(Global.PreferenceSet.PREF_SERVICE_STARTED, false);
-        prefs.endEdit();
+
         //根据检测结果，启动或连接服务
         Intent i = new Intent(this,AlarmService.class);
         if(!started)
@@ -84,7 +82,6 @@ public class MainActivity extends ActionBarActivity
     }
     private void serviceDisconnected()
     {
-
     }
 
     private PlaceholderFragment mMainContent = null;
@@ -111,6 +108,7 @@ public class MainActivity extends ActionBarActivity
     {
         super.onDestroy();
         unbindService(mServiceConn);
+        mService.unregisterOnDataChange(mOnServiceDataChange);
     }
 
     @Override
@@ -243,6 +241,22 @@ public class MainActivity extends ActionBarActivity
                 }
             });
             return rootView;
+        }
+
+        @Override
+        public void onResume()
+        {
+            super.onResume();
+            if(mAlarms != null)
+                onDataChange();
+        }
+
+        @Override
+        public void onStop()
+        {
+            super.onStop();
+            if(mService != null)
+                mService.saveAllAlarms();
         }
     }
 

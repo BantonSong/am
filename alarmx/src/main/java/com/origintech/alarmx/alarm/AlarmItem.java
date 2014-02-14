@@ -1,7 +1,11 @@
 package com.origintech.alarmx.alarm;
 
+import android.content.Context;
+
 import com.origintech.alarmx.alarm.property.PropertyCollection;
 import com.origintech.alarmx.alarm.property.SimpleProperty;
+import com.origintech.alarmx.global.Global;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -136,6 +140,28 @@ public class AlarmItem implements  Comparable<AlarmItem>
         return today.getTimeInMillis();
     }
 
+    public boolean isPM()
+    {
+        if(getInt(PROPERTY_HOUR) >= 12)
+            return true;
+        else
+            return false;
+    }
+    public boolean isEnable()
+    {
+        return getInt(PROPERTY_ENABLED) == 1;
+    }
+    public String getTimeString(boolean mode_24hour)
+    {
+        return Global.Day.getTimeString(
+                getInt(PROPERTY_HOUR),
+                getInt(PROPERTY_MIN),
+                mode_24hour);
+    }
+    public String getRepeatString(Context context)
+    {
+        return Global.Week.getRepeatModeString(context,getInt(PROPERTY_REPEAT));
+    }
     @Override
     public int compareTo(AlarmItem o)
     {

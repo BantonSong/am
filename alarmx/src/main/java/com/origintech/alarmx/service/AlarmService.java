@@ -369,6 +369,10 @@ public class AlarmService extends Service
     @Override
     public void onDestroy()
     {
+        Global.PreferenceSet prefs = new Global.PreferenceSet(this);
+        prefs.beginEdit();
+        prefs.putBoolean(Global.PreferenceSet.PREF_SERVICE_STARTED,false);
+        prefs.endEdit();
         super.onDestroy();
     }
 }

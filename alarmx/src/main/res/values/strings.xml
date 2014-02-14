@@ -7,6 +7,11 @@
     <!--main content-->
     <string name="action_new">New</string>
 
+
+    <!--day time-->
+    <string name="daytime_pm">PM</string>
+    <string name="daytime_am">AM</string>
+
     <!--week-->
     <string name="week_mon">Mon</string>
     <string name="week_tue">Tue</string>

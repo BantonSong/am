@@ -294,26 +294,75 @@ public class AlarmAdapter extends BaseAdapter
         return view;
     }
 
-
+    private View.OnClickListener mOnSwitchClicked = new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View v)
+        {
+            ImageView img = (ImageView)v;
+            int position = (Integer)img.getTag();
+            AlarmItem alarm = mAlarms.get(position);
+            if(alarm.isEnable())
+            {
+                alarm.set(AlarmItem.PROPERTY_ENABLED,0);
+                img.setBackgroundResource(R.drawable.alarm_switch_off);
+            }
+            else
+            {
+                alarm.set(AlarmItem.PROPERTY_ENABLED,1);
+                img.setBackgroundResource(R.drawable.alarm_switch_on);
+            }
+        }
+    };
     protected void refreshAlarmView(View v,int position)
     {
         AlarmItem alarm = mAlarms.get(position);
         //load views
+        boolean mode_24hours = false;
+        Global.PreferenceSet pf = new Global.PreferenceSet(mContext);
+        mode_24hours = pf.getBoolean(Global.PreferenceSet.PREF_24_HOUR,false);
+
         TextView alarmTime = (TextView)v.findViewById(R.id.list_alarm_time);
         TextView alarmApm = (TextView)v.findViewById(R.id.list_alarm_time_apm);
+        if(mode_24hours)
+        {
+            alarmApm.setVisibility(View.GONE);
+        }
+        else
+        {
+            alarmApm.setVisibility(View.VISIBLE);
+            if(alarm.isPM())
+                alarmApm.setText(R.string.daytime_pm);
+            else
+                alarmApm.setText(R.string.daytime_am);
+        }
+        alarmTime.setText(alarm.getTimeString(mode_24hours));
+
+
         ImageView alarmSwitch = (ImageView)v.findViewById(R.id.list_alarm_switch);
+        alarmSwitch.setTag(position);
+        alarmSwitch.setOnClickListener(mOnSwitchClicked);
+        if(alarm.isEnable())
+            alarmSwitch.setBackgroundResource(R.drawable.alarm_switch_on);
+        else
+            alarmSwitch.setBackgroundResource(R.drawable.alarm_switch_off);
 
         TextView alarmName = (TextView)v.findViewById(R.id.list_alarm_name);
+        String name = alarm.getString(AlarmItem.PROPERTY_NAME);
+        if(name.length() == 0)
+            alarmName.setVisibility(View.GONE);
+        else
+        {
+            alarmName.setVisibility(View.VISIBLE);
+            alarmName.setText(name);
+        }
+
         TextView alarmRepeat = (TextView)v.findViewById(R.id.list_alarm_repeat);
+        alarmRepeat.setText(alarm.getRepeatString(mContext));
+
         ImageView alarmRingtone = (ImageView)v.findViewById(R.id.list_alarm_ringtone);
         ImageView alarmVibration = (ImageView)v.findViewById(R.id.list_alarm_vibration);
         ImageView alarmLock = (ImageView)v.findViewById(R.id.list_alarm_lock);
         ImageView alarmRemind = (ImageView)v.findViewById(R.id.list_alarm_remind);
-
-        //set views
-        alarmName.setText(alarm.getString(AlarmItem.PROPERTY_NAME));
-        alarmTime.setText(Global.Day.getTimeString(mContext,
-                alarm.getInt(AlarmItem.PROPERTY_HOUR),
-                alarm.getInt(AlarmItem.PROPERTY_MIN)));
     }
 }
