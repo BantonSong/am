@@ -2,6 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:background="@drawable/shape_main_list_item"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <LinearLayout
@@ -25,6 +26,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="10:00"
                 android:textSize="36sp"
+                android:textColor="#ffffff"
                 android:id="@+id/list_alarm_time"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -32,12 +34,14 @@
                 android:layout_marginLeft="8dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="上午"
+                android:textColor="#ffffff"
                 android:id="@+id/list_alarm_time_apm"/>
         </LinearLayout>
 
-        <ImageButton
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher"
             android:id="@+id/list_alarm_switch"/>
 
     </LinearLayout>
@@ -54,7 +58,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff"
             android:text="Default"
             android:id="@+id/list_alarm_name"/>
         <TextView
@@ -62,15 +67,15 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff"
             android:text="一 二 三 四 五 六 日"
             android:id="@+id/list_alarm_repeat"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_marginRight="8dp">
+            android:gravity="center_vertical">
             <ImageView
                 android:layout_width="@dimen/small_icon_width"
                 android:layout_height="@dimen/small_icon_height"
